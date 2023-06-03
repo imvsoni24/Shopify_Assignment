@@ -4,7 +4,7 @@
 
 async function findOrder() {
   const orderId = document.getElementById("orderId").value;
-  const getOrderUrl = `http://localhost:4000/findOrder?orderId=${orderId}`;
+  const getOrderUrl = `https://gleaming-fox-housecoat.cyclic.app/findOrder?orderId=${orderId}`;
   try {
     let response = await fetch(getOrderUrl);
     response = await response.json();
@@ -28,7 +28,7 @@ async function findOrder() {
 
 async function findPersonInPipedrive() {
   let personEmailId = localStorage.getItem("personEmailId");
-  const findPersonUrl = `http://localhost:4000/findPersonInPipedrive?email=${personEmailId}`;
+  const findPersonUrl = `https://gleaming-fox-housecoat.cyclic.app/findPersonInPipedrive?email=${personEmailId}`;
   try {
     let response = await fetch(findPersonUrl);
     response = await response.json();
@@ -56,7 +56,7 @@ async function createPersonInPipedrive(e) {
     email: personForm.email.value,
     phone: personForm.phone.value,
   };
-  const createPersonUrl = `http://localhost:4000/createPersonInPipedrive`;
+  const createPersonUrl = `https://gleaming-fox-housecoat.cyclic.app/createPersonInPipedrive`;
   try {
     let response = await fetch(createPersonUrl, {
       method: "POST",
@@ -82,7 +82,7 @@ async function createPersonInPipedrive(e) {
 
 async function findProductInPipedrive() {
   let code = document.getElementById("product").value;
-  const findProductUrl = `http://localhost:4000/findProductInPipedrive?term=${code}`;
+  const findProductUrl = `https://gleaming-fox-housecoat.cyclic.app/findProductInPipedrive?term=${code}`;
   let foundProductDetails =
     JSON.parse(localStorage.getItem("foundProductDetails")) || [];
   try {
@@ -119,7 +119,7 @@ async function createProductInPipedrive(e) {
     code: productForm.code.value,
     prices: [{ currency: "USD", price: productForm.prices.value }],
   };
-  const createProductUrl = `http://localhost:4000/createProductInPipedrive`;
+  const createProductUrl = `https://gleaming-fox-housecoat.cyclic.app/createProductInPipedrive`;
   try {
     let response = await fetch(createProductUrl, {
       method: "POST",
@@ -155,7 +155,7 @@ dealForm.addEventListener("submit", createDealInPipedrive);
 
 async function createDealInPipedrive(e) {
   e.preventDefault();
-  const url = `http://localhost:4000/createDealInPipedrive`;
+  const url = `https://gleaming-fox-housecoat.cyclic.app/createDealInPipedrive`;
   let createdPersonId = localStorage.getItem("createdPersonId");
   let foundPersonId = localStorage.getItem("foundPersonId");
   const data = {
@@ -190,7 +190,7 @@ async function createDealInPipedrive(e) {
 // attching a product to deal in pipedrive
 
 async function attachProductToDealInPipedrive() {
-  const url = `http://localhost:4000/attachProductToDealInPipedrive`;
+  const url = `https://gleaming-fox-housecoat.cyclic.app/attachProductToDealInPipedrive`;
   let dealId = localStorage.getItem("dealId");
   let foundProductDetails = JSON.parse(
     localStorage.getItem("foundProductDetails")
